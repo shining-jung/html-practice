@@ -10,11 +10,7 @@
     --color-b1: #343045;
     --color-p: rgb(183, 174, 224);
     --bg-grad-linear: linear-gradient(90deg, #8176af 0%, #c0b7e8 100%);
-    --bg-grad-radial: radial-gradient(
-        circle,
-        rgba(58, 52, 86, 0.95) 0%,
-        rgba(33, 30, 46, 1) 100%
-    );
+    --bg-grad-radial: radial-gradient(circle, rgba(58, 52, 86, 0.95) 0%, rgba(33, 30, 46, 1) 100%);
     --f-size-xs: 1.4rem;
     --lg-padding: 8.4rem;
     --md-padding: 4.5rem;
@@ -67,7 +63,11 @@ textarea::placeholder {
     font-weight: 300;
     opacity: 0.7;
 }
-
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 .btn {
     display: inline-block;
     font-size: 1.2rem;
@@ -185,13 +185,26 @@ main > section {
     top: 0;
     transform: translateX(-50%);
     height: 1px;
-    background: radial-gradient(
-        circle,
-        rgba(192, 183, 232, 1) 0%,
-        rgba(52, 48, 69, 0) 100%
-    );
+    background: radial-gradient(circle, rgba(192, 183, 232, 1) 0%, rgba(52, 48, 69, 0) 100%);
 }
-.modal {
+.modalCon {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+.modalCon .modalBody {
+    display: block;
+    background: #fff;
+    max-width: 64rem;
+    margin: 10vh auto 0;
+    color: #222;
+}
+.modalBody {
     display: none;
 }
 @media (min-width: 991px) {
@@ -227,10 +240,13 @@ main > section {
         padding-left: 8.1rem;
         position: relative;
     }
+
     .in_foot > nav a {
         font-weight: 700;
         padding: 1.3rem 0;
+        transition: 0.3s;
     }
+
     .in_foot > div:nth-of-type(1) {
         display: flex;
         width: 28.5rem;
@@ -244,6 +260,11 @@ main > section {
         color: var(--color-w);
         padding: 1.3rem 0;
         text-align: left;
+        transition: 0.3s;
+    }
+    .in_foot > nav a:hover,
+    .in_foot > div:nth-of-type(1) button:hover {
+        opacity: 0.7;
     }
     .in_foot > nav::before,
     .in_foot > div:nth-of-type(1)::before,
@@ -256,11 +277,11 @@ main > section {
         left: 0%;
         top: 50%;
         transform: translateY(-50%);
-        background: radial-gradient(
-            circle,
-            rgba(192, 183, 232, 1) 0%,
-            rgba(52, 48, 69, 0) 100%
-        );
+        background: radial-gradient(circle, rgba(192, 183, 232, 1) 0%, rgba(52, 48, 69, 0) 100%);
+    }
+    .in_foot > p span::before {
+        content: '-';
+        padding: 0 0.4rem;
     }
 }
 @media (max-width: 1440px) {
@@ -315,11 +336,7 @@ main > section {
         padding: 2rem var(--xs-padding);
         align-items: flex-start;
         background: rgb(48, 44, 66);
-        background: linear-gradient(
-            0deg,
-            rgba(48, 44, 66, 0) 0%,
-            rgba(48, 44, 66, 1) 45%
-        );
+        background: linear-gradient(0deg, rgba(48, 44, 66, 0) 0%, rgba(48, 44, 66, 1) 45%);
     }
 
     #mMenu {
@@ -602,16 +619,48 @@ section.main_vis > div.main_img {
     width: 52.4rem;
     height: 45.5rem;
 }
-section.main_vis > div.main_img::before {
-    content: '';
+.main_img > div {
     position: absolute;
-    width: 73.5rem;
-    height: 84.5rem;
+    width: 73.6rem;
+    height: 84.6rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: url('../img/main_img_bg.svg') no-repeat center center;
-    z-index: 1;
+    background-size: cover;
+}
+
+.main_img > div .path01,
+.main_img > div .path02,
+.main_img > div .path03 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    z-index: 9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.path01 path,
+.path02 path,
+.path03 path {
+    stroke: #c0b7e8;
+    stroke-width: 6;
+    stroke-dasharray: 630;
+    stroke-dashoffset: 0;
+    fill: transparent;
+    animation: moveline 5s ease-in-out infinite alternate;
+}
+@keyframes moveline {
+    0% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        opacity: 0.1;
+        stroke-dashoffset: 630;
+    }
 }
 section.main_vis > div.main_img::after {
     content: '';
@@ -774,6 +823,7 @@ section.main_vis > div.main_img > img {
     section.main_vis > div:nth-of-type(1) .btn {
         position: relative;
     }
+
     section.main_vis > div:nth-of-type(1) .btn::after {
         content: '';
         width: 22.8rem;
@@ -784,7 +834,20 @@ section.main_vis > div.main_img > img {
         top: 50%;
         transform: translateY(-50%);
         right: calc(-100% - 6rem);
+        transition: 0.3s;
     }
+    section.main_vis > div:nth-of-type(1) .btn:hover::after {
+        animation: btnarrow 0.3s ease-in-out 0s infinite alternate;
+    }
+    @keyframes btnarrow {
+        0$ {
+            right: calc(-100% - 5rem);
+        }
+        100% {
+            right: calc(-100% - 7rem);
+        }
+    }
+
     section.main_vis::before {
         content: url('../img/main_vis_bg.svg');
         position: absolute;
@@ -851,6 +914,14 @@ section.main_vis > div.main_img > img {
         margin: 14.5rem auto 0;
         transform: translateY(0);
     }
+    .main_img > div {
+        width: 52.2rem;
+        height: 60.01rem;
+    }
+    .main_img > div svg {
+        width: 52.2rem;
+        height: 60.01rem;
+    }
     .contactUsSlide {
         margin-top: 13.58%;
         position: relative;
@@ -905,9 +976,6 @@ section.main_vis > div.main_img > img {
     }
     #mMenu {
         top: 3.6rem;
-    }
-    section.main_vis > div.main_img::before {
-        background-size: 66%;
     }
 }
 
@@ -1191,11 +1259,7 @@ section.banner > div:first-of-type > button:hover::before {
 .join_form {
     padding: 9.2rem 12.2rem 8.2rem 12.2rem;
     background-color: #37324f;
-    background: radial-gradient(
-        circle,
-        rgb(82 76 109 / 90%) 24%,
-        rgb(14 6 20/ 100%)
-    );
+    background: radial-gradient(circle, rgb(82 76 109 / 90%) 24%, rgb(14 6 20/ 100%));
     border-radius: 10rem;
     text-align: center;
 }
@@ -1214,11 +1278,7 @@ section.banner > div:first-of-type > button:hover::before {
     width: 41.4rem;
     height: 1px;
     background: var(--color-p);
-    background: radial-gradient(
-        circle,
-        rgba(192, 183, 232, 1) 0%,
-        rgba(52, 48, 69, 0) 100%
-    );
+    background: radial-gradient(circle, rgba(192, 183, 232, 1) 0%, rgba(52, 48, 69, 0) 100%);
 }
 
 .join_form > span {
@@ -1234,24 +1294,53 @@ section.banner > div:first-of-type > button:hover::before {
     flex-wrap: wrap;
     justify-content: center;
 }
-
-.join_form input:nth-child(5) {
-    width: 100%;
+.join_form label {
+    position: relative;
 }
-.join_form textarea {
+.join_form label input,
+.join_form label textarea {
     width: 100%;
+    transition: 0.3s;
+}
+.join_form label input:focus,
+.join_form label textarea:focus {
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+}
+
+.join_form textarea {
     min-height: 21rem;
     margin-bottom: 5.1rem;
 }
 
+.join_form label > span {
+    position: absolute;
+    top: 2.7rem;
+    left: 4.2rem;
+    color: var(--color-w);
+    font-weight: 300;
+    opacity: 0.7;
+    transition: 0.4s;
+}
+.join_form label.fix span,
+.join_form label input:focus + span,
+.join_form label textarea:focus + span {
+    top: -2.7rem;
+}
+
+.join_form label:nth-child(5),
+.join_form label:nth-child(6) {
+    width: 100%;
+}
+
 @media (min-width: 991px) {
     /*join_from*/
-    .join_form input {
+    .join_form label {
         margin-bottom: 3.9rem;
         width: calc(50% - 6px);
     }
-    .join_form input:nth-child(1),
-    .join_form input:nth-child(3) {
+    .join_form label:nth-child(1),
+    .join_form label:nth-child(3) {
         margin-right: 12px;
     }
     .join_form .btn {
