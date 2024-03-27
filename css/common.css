@@ -648,6 +648,7 @@ section.main_vis > div.main_img {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/*
 .path01 path,
 .path02 path,
 .path03 path {
@@ -658,6 +659,7 @@ section.main_vis > div.main_img {
     fill: transparent;
     animation: moveline 5s ease-in-out infinite alternate;
 }
+*/
 .main_img > div:nth-of-type(2) {
     position: absolute;
     top: 50%;
@@ -686,7 +688,7 @@ section.main_vis > div.main_img {
         transform: rotate(360deg);
     }
 }
-
+/*
 @keyframes moveline {
     0% {
         opacity: 1;
@@ -697,7 +699,7 @@ section.main_vis > div.main_img {
         stroke-dashoffset: 630;
     }
 }
-
+*/
 section.main_vis > div.main_img::after {
     content: '';
     position: absolute;

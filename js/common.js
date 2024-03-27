@@ -64,13 +64,12 @@ let letStepSlide = new Swiper('.varStepSlide', {
 //input에 값이 변경되었을때
 // 만약 깂이 있다면 부모에게 fix 클래스를 추가 그외는 fix제거
 const formElm = document.querySelectorAll('.join_form input, .join_form textarea');
-formElm.forEach((e) => {
-    e.addEventListener('input', () => {
-        if (e.value !== '') {
-            //왜 e.target이 undefined가 뜰까...
-            e.parentNode.classList.add('fix');
-        } else if (e.value === '') {
-            e.parentNode.classList.remove('fix');
+formElm.forEach((item) => {
+    item.addEventListener('input', (eve) => {
+        if (eve.value !== '') {
+            eve.target.parentNode.classList.add('fix');
+        } else if (eve.value === '') {
+            eve.target.parentNode.classList.remove('fix');
         }
     });
 });
@@ -103,9 +102,14 @@ let mainPath01 = `
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     >
-    <path
+    <path id="motionPath1"
         d="M733 170C643.774 184.843 473.913 269.224 508.271 487.998C542.63 706.772 396.407 813.155 319 839"
     />
+    <circle r="3" fill="rgba(255,255,255,0.5)">
+            <animateMotion repeatCount="indefinite" dur="5s">
+                <mpath href="#motionPath1"/>
+            </animateMotion>
+        </circle>
     </svg>
 `;
 let mainPath02 = `
@@ -116,23 +120,25 @@ let mainPath02 = `
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <path
+        <path id="motionPath2"
             d="M738.5 420.5C491.667 408.333 -0.900015 474.9 3.49999
     838.5"
         />
+        <circle r="3" fill="rgba(255,255,255,0.5)">
+            <animateMotion repeatCount="indefinite" dur="5s">
+                <mpath href="#motionPath2"/>
+            </animateMotion>
+        </circle>
     </svg>
 `;
 let mainPath03 = `
-    <svg
-        width="736"
-        height="846"
-        viewBox="0 0 736 846"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            d="M225.193 0C221.912 140.127 259.209 433.314 434.642 485.053C610.075 536.792 613.776 746.576 593.697 845"
-        />
+    <svg width="736" height="846" viewBox="0 0 736 846" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path id="motionPath3" d="M225.193 0C221.912 140.127 259.209 433.314 434.642 485.053C610.075 536.792 613.776 746.576 593.697 845" />
+        <circle r="3" fill="rgba(255,255,255,0.5)">
+            <animateMotion repeatCount="indefinite" dur="5s">
+                <mpath href="#motionPath3"/>
+            </animateMotion>
+        </circle>
     </svg>
 `;
 
