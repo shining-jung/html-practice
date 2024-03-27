@@ -23,6 +23,7 @@
 }
 html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -337,6 +338,8 @@ main > section {
         align-items: flex-start;
         background: rgb(48, 44, 66);
         background: linear-gradient(0deg, rgba(48, 44, 66, 0) 0%, rgba(48, 44, 66, 1) 45%);
+
+        transition: 0.5s;
     }
 
     #mMenu {
@@ -422,7 +425,8 @@ main > section {
         width: 100%;
         top: 0;
         left: 0;
-        padding: 50rem 8rem 8rem 8rem;
+        margin-top: 50rem;
+        padding: 0 8rem 8rem 8rem;
     }
     body.active header > div .btn {
         width: 100%;
@@ -444,6 +448,7 @@ main > section {
         opacity: 0;
         transition: 0.5s;
         z-index: -1;
+        transition: 0.8s;
     }
     body.active header::before {
         opacity: 1;
@@ -619,7 +624,8 @@ section.main_vis > div.main_img {
     width: 52.4rem;
     height: 45.5rem;
 }
-.main_img > div {
+
+.main_img > div:nth-of-type(1) {
     position: absolute;
     width: 73.6rem;
     height: 84.6rem;
@@ -630,9 +636,9 @@ section.main_vis > div.main_img {
     background-size: cover;
 }
 
-.main_img > div .path01,
-.main_img > div .path02,
-.main_img > div .path03 {
+.main_img > div:nth-of-type(1) .path01,
+.main_img > div:nth-of-type(1) .path02,
+.main_img > div:nth-of-type(1) .path03 {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -652,6 +658,35 @@ section.main_vis > div.main_img {
     fill: transparent;
     animation: moveline 5s ease-in-out infinite alternate;
 }
+.main_img > div:nth-of-type(2) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 1rem);
+    height: calc(100% + 1rem);
+    border-radius: 10rem 10rem 10rem 24rem;
+    overflow: hidden;
+}
+.main_img > div:nth-of-type(2)::before {
+    content: '';
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    display: block;
+    width: 150%;
+    height: 150%;
+    z-index: -1;
+    background: conic-gradient(var(--color-b1) 0, #c0b7e8 360deg);
+    animation: rotate 10s infinite linear;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes moveline {
     0% {
         opacity: 1;
@@ -662,6 +697,7 @@ section.main_vis > div.main_img {
         stroke-dashoffset: 630;
     }
 }
+
 section.main_vis > div.main_img::after {
     content: '';
     position: absolute;
@@ -768,12 +804,15 @@ section.main_vis > div.main_img > img {
     }
     .contactUsSlide .swiper-slide:nth-of-type(1) {
         width: 33.7% !important;
+        margin-right: 0 !important;
     }
     .contactUsSlide .swiper-slide:nth-of-type(2) {
         width: 31% !important;
+        margin-right: 0 !important;
     }
     .contactUsSlide .swiper-slide:nth-of-type(3) {
         width: 35.3% !important;
+        margin-right: 0 !important;
     }
 }
 @media (max-width: 1440px) {
@@ -914,14 +953,12 @@ section.main_vis > div.main_img > img {
         margin: 14.5rem auto 0;
         transform: translateY(0);
     }
-    .main_img > div {
+    .main_img > div:nth-of-type(1),
+    .main_img > div:nth-of-type(1) svg {
         width: 52.2rem;
         height: 60.01rem;
     }
-    .main_img > div svg {
-        width: 52.2rem;
-        height: 60.01rem;
-    }
+
     .contactUsSlide {
         margin-top: 13.58%;
         position: relative;
@@ -1176,7 +1213,12 @@ section.banner > div:first-of-type > button:hover::before {
     display: flex;
     justify-content: center;
 }
-
+.partnerSlide .swiper-wrapper .swiper-slide a:hover img {
+    transition: 0.4s;
+}
+.partnerSlide .swiper-wrapper .swiper-slide a:hover img {
+    filter: opacity(1) drop-shadow(0 0 0 #fff);
+}
 /*buld_step*/
 
 .swiper.varStepSlide {
@@ -1210,7 +1252,7 @@ section.banner > div:first-of-type > button:hover::before {
     transition: 0.5s;
 }
 .varStepSlide .swiper-slide:hover::before {
-    box-shadow: 0 0 0 1.4rem #b7aee0;
+    box-shadow: 0 0 0 1.6rem #b7aee0;
     background: var(--bg-grad-radial);
     color: var(--color-w);
 }
@@ -1247,6 +1289,7 @@ section.banner > div:first-of-type > button:hover::before {
     height: 100%;
     top: 0;
     left: 0;
+    transition: 0.3s;
 }
 .varStepSlide .swiper-slide a::before {
     content: url('../img/step_arrow.svg');
@@ -1460,9 +1503,13 @@ section.banner > div:first-of-type > button:hover::before {
     .join_form h2::before {
         width: 11.6rem;
     }
-    section.join_form form input {
+    section.join_form form label {
         width: 100%;
-        margin-bottom: 2.2rem;
+        margin-bottom: 4rem;
+    }
+    .join_form label > span {
+        top: 2rem;
+        left: 2rem;
     }
     section.join_form form .btn {
         max-width: 100%;

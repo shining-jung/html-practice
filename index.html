@@ -31,14 +31,14 @@
                     </a>
                 </h1>
                 <nav>
-                    <a href="javasciprt:void(0)">ABOUT</a>
-                    <a href="javasciprt:void(0)">SERVICES</a>
-                    <a href="javasciprt:void(0)">TECHNOLOGIES</a>
-                    <a href="javasciprt:void(0)">HOW TO</a>
+                    <a href="#about">ABOUT</a>
+                    <a href="#whybuild">SERVICES</a>
+                    <a href="#banner">TECHNOLOGIES</a>
+                    <a href="#buldstep">HOW TO</a>
                 </nav>
                 <div>
                     <a href="javasciprt:void(0)" class="btn btn_2st">CONTACT US</a>
-                    <a href="javasciprt:void(0)" class="btn btn_1st">JOIN HYDRA</a>
+                    <a href="#join" class="btn btn_1st">JOIN HYDRA</a>
                 </div>
                 <button type="button" id="mMenu">
                     <span></span>
@@ -56,6 +56,7 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore nisl tincidunt eget. Lectus mauris eros in vitae .</p>
                         <a href="javasciprt:void(0)" class="btn btn_1st">BUILD YOUR WORLD</a>
                     </div>
+                    <!-- 시안상 간격이 다 틀림...또르르 -->
                     <div class="swiper contactUsSlide">
                         <ul class="swiper-wrapper">
                             <li class="swiper-slide">
@@ -88,10 +89,11 @@
                             <div class="path02"></div>
                             <div class="path03"></div>
                         </div>
+                        <div></div>
                     </div>
                 </section>
 
-                <section class="about">
+                <section id="about" class="about">
                     <div class="section_tit">
                         <h2>
                             <strong>INTRODUCTION</strong>
@@ -120,7 +122,7 @@
                     </div>
                 </section>
 
-                <section class="why_build">
+                <section id="whybuild" class="why_build">
                     <div class="section_tit">
                         <h2>
                             <strong>WHY BUILD</strong>
@@ -181,7 +183,7 @@
                     </div>
                 </section>
 
-                <section class="banner">
+                <section id="banner" class="banner">
                     <div>
                         <strong>TECHNOLOGIES & HARDWARE</strong>
                         <span>USED BY HYDRA VR.</span>
@@ -217,7 +219,7 @@
                     </div>
                 </section>
 
-                <section class="buld_step">
+                <section id="buldstep" class="buld_step">
                     <div class="section_tit">
                         <h2>
                             <strong>HOW WE BUILD</strong>
@@ -250,7 +252,7 @@
                     </div>
                 </section>
 
-                <section class="join_form">
+                <section id="join" class="join_form">
                     <h2>JOIN HYDRA</h2>
                     <span>Let’s Build Your VR Experience</span>
                     <form action="">
@@ -287,17 +289,17 @@
                 <div class="in_foot">
                     <span class="footer_logo"></span>
                     <nav>
-                        <a href="javsciprt:void(0)">ABOUT</a>
-                        <a href="javsciprt:void(0)">SERVICES</a>
-                        <a href="javsciprt:void(0)">TECHNOLOGIES</a>
-                        <a href="javsciprt:void(0)">HOW TO</a>
-                        <a href="javsciprt:void(0)">JOIN HYDRA</a>
+                        <a href="#about">ABOUT</a>
+                        <a href="#whybuild">SERVICES</a>
+                        <a href="#banner">TECHNOLOGIES</a>
+                        <a href="#buldstep">HOW TO</a>
+                        <a href="#join">JOIN HYDRA</a>
                     </nav>
                     <div>
                         <button type="button" class="button" data-modal="faq">F.A.Q</button>
-                        <button type="button" class="button" data-madal="stieMap">SITEMAP</button>
-                        <button type="button" class="button" data-madal="conditions">CONDITIONS</button>
-                        <button type="button" class="button" data-madal="licenses">LICENSES</button>
+                        <button type="button" class="button" data-modal="stieMap">SITEMAP</button>
+                        <button type="button" class="button" data-modal="conditions">CONDITIONS</button>
+                        <button type="button" class="button" data-modal="licenses">LICENSES</button>
                     </div>
                     <div>
                         <span>SOCIALIZE WITH HYDRA</span>
@@ -326,9 +328,15 @@
         </div>
         <div class="modalBody stieMap">
             내용
-            <button type="button" class="modalClose">Close</button>
+            <button type="button" class="modalClose btn btn_1st">Close</button>
         </div>
-        <div class="modalBody conditions">내용내용 <button type="button" class="modalClose">Close</button></div>
-        <div class="modalBody licenses">내용내용 <button type="button" class="modalClose">Close</button></div>
+        <div class="modalBody conditions">
+            내용내용
+            <button type="button" class="modalClose btn btn_1st">Close</button>
+        </div>
+        <div class="modalBody licenses">
+            내용내용
+            <button type="button" class="modalClose btn btn_1st">Close</button>
+        </div>
     </body>
 </html>

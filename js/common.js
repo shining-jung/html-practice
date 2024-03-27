@@ -63,31 +63,30 @@ let letStepSlide = new Swiper('.varStepSlide', {
 /*form*/
 //input에 값이 변경되었을때
 // 만약 깂이 있다면 부모에게 fix 클래스를 추가 그외는 fix제거
-
 const formElm = document.querySelectorAll('.join_form input, .join_form textarea');
 formElm.forEach((e) => {
     e.addEventListener('input', () => {
         if (e.value !== '') {
             //왜 e.target이 undefined가 뜰까...
             e.parentNode.classList.add('fix');
-            console.log(e.parentNode);
         } else if (e.value === '') {
             e.parentNode.classList.remove('fix');
-            console.log(e.parentNode);
         }
     });
 });
 
 /*modal*/
 const modalSelect = document.querySelectorAll('[data-modal]');
-modalSelect.forEach((e) => {
-    e.addEventListener('click', (e) => {
+modalSelect.forEach((target) => {
+    target.addEventListener('click', (e) => {
         const modalData = e.target.getAttribute('data-modal');
         const modalElm = document.createElement('div');
         const mdalcon = document.querySelector(`.modalBody.${modalData}`).outerHTML;
+        console.log('${modalData}');
         modalElm.classList.add('modalCon');
         modalElm.innerHTML = mdalcon;
         document.body.append(modalElm);
+
         const modalClose = modalElm.querySelector('.modalClose');
         modalClose.addEventListener('click', () => {
             modalElm.remove();
