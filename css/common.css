@@ -201,10 +201,48 @@ main > section {
 .modalCon .modalBody {
     display: block;
     background: #fff;
-    max-width: 64rem;
+    max-width: 100rem;
+    width: 100%;
     margin: 10vh auto 0;
     color: #222;
+    position: relative;
+    border-radius: 1.6rem;
+    padding: 2.4rem;
 }
+.modalCon .modalClose {
+    position: absolute;
+    bottom: -6rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/**/
+.modalCon .modalBody.bam {
+    padding: 0 0 33% 0;
+    border-radius: 0;
+}
+.modalCon .bam .modalClose {
+    top: -2.6rem;
+    right: -2.6rem;
+    bottom: auto;
+    left: auto;
+    transform: translateX(0);
+    color: transparent;
+    width: 0;
+}
+.bam .modalClose::before {
+    content: '\f057';
+    font: var(--fa-font-solid);
+    color: var(--color-w);
+    font-size: 2.6rem;
+}
+.bam iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .modalBody {
     display: none;
 }

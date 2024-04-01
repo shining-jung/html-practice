@@ -81,10 +81,15 @@ modalSelect.forEach((target) => {
         const modalData = e.target.getAttribute('data-modal');
         const modalElm = document.createElement('div');
         const mdalcon = document.querySelector(`.modalBody.${modalData}`).outerHTML;
-        console.log('${modalData}');
         modalElm.classList.add('modalCon');
         modalElm.innerHTML = mdalcon;
         document.body.append(modalElm);
+        //만약 .bam이면 ifram의 src를 변경한다 (autoplay=1 추가)
+        if (modalData == 'bam') {
+            let modalIframe = modalElm.querySelector('.bam iframe');
+            console.log(modalIframe);
+            modalIframe.src = 'https://www.youtube.com/embed/smdmEhkIRVc?autoplay=1';
+        }
 
         const modalClose = modalElm.querySelector('.modalClose');
         modalClose.addEventListener('click', () => {
