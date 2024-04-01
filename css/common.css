@@ -831,6 +831,7 @@ section.main_vis > div.main_img > img {
 }
 .contactUsSlide .swiper-slide > div > p {
     font-size: var(--f-size-xs);
+    padding-top: 1rem;
 }
 
 @media (min-width: 1440px) {
@@ -1045,6 +1046,7 @@ section.main_vis > div.main_img > img {
     .contactUsSlide .swiper-slide > div > p {
         max-width: 24rem;
         text-align: left;
+        padding-top: 0;
     }
 }
 @media (max-width: 550px) {
