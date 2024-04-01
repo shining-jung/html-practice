@@ -919,7 +919,7 @@ section.main_vis > div.main_img > img {
         animation: btnarrow 0.3s ease-in-out 0s infinite alternate;
     }
     @keyframes btnarrow {
-        0$ {
+        0% {
             right: calc(-100% - 5rem);
         }
         100% {
