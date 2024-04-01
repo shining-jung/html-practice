@@ -1509,6 +1509,10 @@ section.banner > div:first-of-type > button:hover::before {
         width: 100%;
         margin-bottom: 4rem;
     }
+    section.join_form form label:last-of-type,
+    section.join_form form label:last-of-type textarea {
+        margin-bottom: 2rem;
+    }
     .join_form label > span {
         top: 2rem;
         left: 2rem;
@@ -1516,6 +1520,7 @@ section.banner > div:first-of-type > button:hover::before {
     section.join_form form .btn {
         max-width: 100%;
     }
+
     /*section 간 여백 */
     section.about {
         margin-top: 15%;
